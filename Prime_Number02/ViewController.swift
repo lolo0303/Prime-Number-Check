@@ -10,8 +10,10 @@ class ViewController: UIViewController,UITextFieldDelegate {
     var isPrime = true
     
     @IBAction func Check(_ sender: Any) {
+        
+        // optional binding(Conditional unwraping)을 사용하여 0과 숫자값을 제외함
         if let number = Int(textA.text!) {
-            print(number)
+           
             var isPrime = true
             
             if number <= 0 {
@@ -39,6 +41,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
             }
             textA.text = ""
         } else {
+            // 0과 숫자값이 입력됐을때...
             print("nil 발생")
             LblA.text = "input numeric value!"
             textA.text = ""
@@ -52,10 +55,12 @@ class ViewController: UIViewController,UITextFieldDelegate {
         textA.clearButtonMode = UITextField.ViewMode.always
     }
     
+    // background view를 누르면 키패드가 내려감
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
+    // return 키를 누르면 키패드가 내려감
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textA.resignFirstResponder()
         return true
